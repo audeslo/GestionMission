@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Véhicules</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des Véhicules</h1>
+        <a class="btn btn-primary" th:href="@{/vehicules/nouveau}">Nouveau Véhicule</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Immatriculation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="vehicule : ${vehicules}">
+                    <td th:text="${vehicule.id}"></td>
+                    <td th:text="${vehicule.marque}"></td>
+                     <td th:text="${vehicule.modele}"></td>
+                    <td th:text="${vehicule.immatriculation}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/vehicules/{id}/modifier(id=${vehicule.id})}">Modifier</a>
+                        <a class="btn btn-danger" th:href="@{/vehicules/{id}/supprimer(id=${vehicule.id})}">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script th:src="@{/js/bootstrap.min.js}"></script>    
+</body>
+</html>

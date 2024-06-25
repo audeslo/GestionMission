@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Missions</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des Missions</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Conducteur</th>
+                    <th>Véhicule</th>
+                    <th>Destination</th>
+                    <th>Date de Début</th>
+                    <th>Date de Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mission : ${missions}">
+                    <td th:text="${mission.conducteur.nom + ' ' + mission.conducteur.prenom}"></td>
+                    <td th:text="${mission.vehicule.marque + ' ' + mission.vehicule.modele}"></td>
+                    <td th:text="${mission.destination}"></td>
+                    <td th:text="${#temporals.format(mission.dateDebut, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${#temporals.format(mission.dateFin, 'dd/MM/yyyy HH:mm')}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-primary" th:href="@{/missions/recherche}">Nouvelle Recherche</a>
+    </div>
+    <script th:src="@{/js/custom.js}"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Missions</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des Missions</h1>
+        <a class="btn btn-primary" th:href="@{/missions/nouveau}">Nouvelle Mission</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Conducteur</th>
+                    <th>Véhicule</th>
+                    <th>Destination</th>
+                    <th>Date de Début</th>
+                    <th>Date de Fin</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mission : ${missions}">
+                    <td th:text="${mission.id}">1</td>
+                    <td th:text="${mission.conducteur.nom + ' ' + mission.conducteur.prenom}">Conducteur</td>
+                    <td th:text="${mission.vehicule.marque + ' ' + mission.vehicule.modele}">Véhicule</td>
+                    <td th:text="${mission.destination}">Destination</td>
+                    <td th:text="${#temporals.format(mission.dateDebut, 'dd/MM/yyyy HH:mm')}">Date de Début</td>
+                    <td th:text="${#temporals.format(mission.dateFin, 'dd/MM/yyyy HH:mm')}">Date de Fin</td>
+                    <!--<td th:text="${#dates.format(mission.dateFin, 'dd MMMM yyyy, HH:mm')}">Date de Fin</td>-->
+                    <td>
+                        <a th:href="@{/missions/{id}/modifier(id=${mission.id})}" class="btn btn-primary">Modifier</a>
+                        <a th:href="@{/missions/{id}/supprimer(id=${mission.id})}" class="btn btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script th:src="@{/js/custom.js}"></script>
+</body>
+</html>

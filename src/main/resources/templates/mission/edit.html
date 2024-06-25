@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modifier une Mission</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Modifier une Mission</h1>
+        <form th:action="@{/missions/{id}/modifier(id=${mission.id})}" th:object="${mission}" method="post">
+            <div class="form-group">
+                <label for="conducteur">Conducteur</label>
+                <select id="conducteur" th:field="*{conducteur}" class="form-control" required>
+                    <option th:each="conducteur : ${conducteurs}"
+                            th:value="${conducteur.id}"
+                            th:text="${conducteur.nom + ' ' + conducteur.prenom}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vehicule">Véhicule</label>
+                <select id="vehicule" th:field="*{vehicule}" class="form-control" required>
+                    <option th:each="vehicule : ${vehicules}"
+                            th:value="${vehicule.id}"
+                            th:text="${vehicule.marque + ' ' + vehicule.modele}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" th:field="*{destination}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="dateDebut">Date de Début</label>
+                <input type="datetime-local" id="dateDebut" th:field="*{dateDebut}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="dateFin">Date de Fin</label>
+                <input type="datetime-local" id="dateFin" th:field="*{dateFin}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="participants">Participants</label>
+                <select id="participants" th:field="*{participants}" multiple="true" class="form-control">
+                    <option th:each="participant : ${participants}"
+                            th:value="${participant.id}"
+                            th:text="${participant.nom + ' ' + participant.prenom}">
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+    </div>
+    <script th:src="@{/js/custom.js}"></script>
+</body>
+</html>

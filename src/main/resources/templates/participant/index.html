@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Participants</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des Participants</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Poste</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="participant : ${participants}">
+                    <td th:text="${participant.id}">1</td>
+                    <td th:text="${participant.nom}">Nom</td>
+                    <td th:text="${participant.prenom}">Prénom</td>
+                    <td th:text="${participant.poste}">Poste</td>
+                    <td>
+                        <a th:href="@{/participants/{id}/modifier(id=${participant.id})}" class="btn btn-primary">Modifier</a>
+                        <a th:href="@{/participants/{id}/supprimer(id=${participant.id})}" class="btn btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/participants/nouveau" class="btn btn-success">Ajouter un Participant</a>
+    </div>
+    <script th:src="@{/js/custom.js}"></script>
+</body>
+</html>

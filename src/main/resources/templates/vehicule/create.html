@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Créer un Véhicule</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Créer un Véhicule</h1>
+        <form th:action="@{/vehicules}" th:object="${vehicule}" method="post">
+            <div class="form-group">
+                <label for="marque">Marque</label>
+                <input type="text" class="form-control" id="marque" th:field="*{marque}">
+            </div>
+            <div class="form-group">
+                <label for="modele">Modèle</label>
+                <input type="text" class="form-control" id="modele" th:field="*{modele}">
+            </div>
+            <div class="form-group">
+                <label for="immatriculation">Immatriculation</label>
+                <input type="text" class="form-control" id="immatriculation" th:field="*{immatriculation}">
+            </div>
+            
+            <div class="form-group">
+                <label for="datemiseencirculation">Date de Mise en Circulation</label>
+                <input type="date" class="form-control" id="datemiseencirculation" th:field="*{datemiseencirculation}">
+            </div>
+            
+            <div class="form-group">
+                <label for="nombreplace">Nombre de place</label>
+                <input type="number" class="form-control" id="nombreplace" th:field="*{nombreplace}">
+            </div>
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+</body>
+</html>
