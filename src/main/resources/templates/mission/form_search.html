@@ -18,7 +18,70 @@
             </div>
             <button type="submit" class="btn btn-primary">Rechercher</button>
         </form>
+
+        <form th:action="@{/missions/export/excel}" method="get" style="margin-top: 20px;">
+            <input type="hidden" id="dateDebut" name="dateDebut" />
+            <input type="hidden" id="dateFin" name="dateFin" />
+            <button type="submit" class="btn btn-success">Exporter en Excel</button>
+        </form>
+
+        <form th:action="@{/missions/export/pdf}" method="get" style="margin-top: 20px;">
+            <input type="hidden" id="dateDebut" name="dateDebut" />
+            <input type="hidden" id="dateFin" name="dateFin" />
+            <button type="submit" class="btn btn-danger">Exporter en PDF</button>
+        </form>
+    </div>
+    <script>
+        // Script pour copier les valeurs des inputs de date dans les formulaires d'exportation
+        document.querySelector('form[action="/missions/recherche"]').addEventListener('submit', function (e) {
+            var dateDebut = document.getElementById('dateDebut').value;
+            var dateFin = document.getElementById('dateFin').value;
+
+            document.querySelectorAll('input[name="dateDebut"]').forEach(function (input) {
+                input.value = dateDebut;
+            });
+            document.querySelectorAll('input[name="dateFin"]').forEach(function (input) {
+                input.value = dateFin;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rechercher des Missions</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Rechercher des Missions</h1>
+        <form th:action="@{/missions/recherche}" method="post">
+            <div class="form-group">
+                <label for="dateDebut">Date de Début</label>
+                <input type="datetime-local" id="dateDebut" name="dateDebut" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="dateFin">Date de Fin</label>
+                <input type="datetime-local" id="dateFin" name="dateFin" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </form>
     </div>
     <script th:src="@{/js/custom.js}"></script>
 </body>
-</html>
+</html> -->

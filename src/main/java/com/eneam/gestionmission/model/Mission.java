@@ -2,7 +2,10 @@ package com.eneam.gestionmission.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,8 +13,10 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties({"participants"})
 public class Mission {
 	
 	@Id 
@@ -21,10 +26,14 @@ public class Mission {
     private LocalDateTime dateFin;
     private String destination;
     private String objetmission;
+    
+    @ElementCollection(fetch = FetchType.EAGER)
     private List <String> listparticipants;
     
     @ManyToOne
     private Conducteur conducteur;
+    
+    
     
     public List<Participant> getParticipants() {
 		return participants;

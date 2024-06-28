@@ -3,6 +3,7 @@
  */
 package com.eneam.gestionmission.controller;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -14,9 +15,13 @@ import org.springframework.web.bind.annotation.*;
 
 import com.eneam.gestionmission.model.Mission;
 import com.eneam.gestionmission.service.ConducteurService;
+import com.eneam.gestionmission.service.ExcelExportService;
 import com.eneam.gestionmission.service.MissionService;
+import com.eneam.gestionmission.service.PDFExportService;
 import com.eneam.gestionmission.service.ParticipantService;
 import com.eneam.gestionmission.service.VehiculeService;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 
@@ -24,6 +29,7 @@ import com.eneam.gestionmission.service.VehiculeService;
 
 @Controller
 @RequestMapping("/missions")
+
 public class MissionController {
 	
 	@Autowired
@@ -37,6 +43,13 @@ public class MissionController {
 
     @Autowired
     private ParticipantService participantService;
+    
+
+    @Autowired
+    private ExcelExportService excelExportService;
+
+    @Autowired
+    private PDFExportService pdfExportService;
 
     @GetMapping
     public String listerMissions(Model model) {
@@ -101,8 +114,8 @@ public class MissionController {
     }
 
     @PostMapping("/recherche")
-    public String rechercherMissionsParPeriode(@RequestParam("dateDebut") String dateDebut,
-                                               @RequestParam("dateFin") String dateFin,
+    public String rechercherMissionsParPeriode(@RequestParam String dateDebut,
+                                               @RequestParam String dateFin,
                                                Model model) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime dateDebutParsed = LocalDateTime.parse(dateDebut, formatter);
@@ -111,6 +124,30 @@ public class MissionController {
         List<Mission> missions = missionService.trouverMissionsParPeriode(dateDebutParsed, dateFinParsed);
         model.addAttribute("missions", missions);
         return "mission/list_mission";
+    }
+    
+    @GetMapping("/export/excel")
+    public void exporterMissionsExcel(@RequestParam("dateDebut") String dateDebut,
+                                      @RequestParam("dateFin") String dateFin,
+                                      HttpServletResponse response) throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime dateDebutParsed = LocalDateTime.parse(dateDebut, formatter);
+        LocalDateTime dateFinParsed = LocalDateTime.parse(dateFin, formatter);
+
+        List<Mission> missions = missionService.trouverMissionsParPeriode(dateDebutParsed, dateFinParsed);
+        excelExportService.exportMissionsToExcel(missions, response);
+    }
+
+    @GetMapping("/export/pdf")
+    public void exporterMissionsPDF(@RequestParam("dateDebut") String dateDebut,
+                                    @RequestParam("dateFin") String dateFin,
+                                    HttpServletResponse response) throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime dateDebutParsed = LocalDateTime.parse(dateDebut, formatter);
+        LocalDateTime dateFinParsed = LocalDateTime.parse(dateFin, formatter);
+
+        List<Mission> missions = missionService.trouverMissionsParPeriode(dateDebutParsed, dateFinParsed);
+        pdfExportService.exportMissionsToPDF(missions, response);
     }
 
 }

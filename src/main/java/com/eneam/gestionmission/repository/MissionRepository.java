@@ -20,4 +20,5 @@ public interface MissionRepository extends JpaRepository<Mission, Long> {
 
 	List<Mission> findByConducteurAndDateFinAfterAndDateDebutBefore(Conducteur conducteur, LocalDateTime dateDebut, LocalDateTime dateFin);
 	List<Mission> findByDateDebutBetweenOrDateFinBetween(LocalDateTime dateDebut1, LocalDateTime dateFin1, LocalDateTime dateDebut2, LocalDateTime dateFin2);
+	List<Mission> findByDateDebutBetween(LocalDateTime dateDebut, LocalDateTime dateFin);
 }
