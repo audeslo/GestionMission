@@ -23,7 +23,7 @@
             <table class="table">
                 <thead class="table-secondary text-size-14">
                 <tr>
-                    <th>ID</th>
+                    <th>N°</th>
                     <th>Marque</th>
                     <th>Modèle</th>
                     <th>Immatriculation</th>
@@ -31,8 +31,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="vehicule : ${vehicules}">
-                    <td th:text="${vehicule.id}"></td>
+                <tr th:each="vehicule, iter : ${vehicules}">
+                    <td th:text="${iter.count}"></td>
                     <td th:text="${vehicule.marque}"></td>
                     <td th:text="${vehicule.modele}"></td>
                     <td th:text="${vehicule.immatriculation}"></td>

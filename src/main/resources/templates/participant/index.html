@@ -24,7 +24,7 @@
             <table class="table">
                 <thead class="table-secondary text-size-14">
                 <tr>
-                    <th>ID</th>
+                    <th>N°</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Poste</th>
@@ -32,13 +32,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="participant : ${participants}">
-                    <td th:text="${participant.id}">1</td>
-                    <td th:text="${participant.nom}">Nom</td>
-                    <td th:text="${participant.prenom}">Prénom</td>
-                    <td th:text="${participant.poste}">Poste</td>
+                <tr th:each="participant, iter : ${participants}">
+                    <td th:text="${iter.count}"></td>
+                    <td th:text="${participant.nom}"></td>
+                    <td th:text="${participant.prenom}"></td>
+                    <td th:text="${participant.poste}"></td>
                     <td>
-                        <a th:href="@{/participants/{id}/modifier(id=${participant.id})}"><i class="fa fa-pencil"></i></a>
+                        <a th:href="@{/participants/{id}/modifier(id=${participant.id})}"><i class="fa fa-pencilcil me-2"></i></a>
                         <a th:href="@{/participants/{id}/supprimer(id=${participant.id})}"><i class="fa fa-trash s-color-red"></i></a>
                     </td>
                 </tr>

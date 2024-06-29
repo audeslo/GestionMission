@@ -10,7 +10,7 @@ public class DefaultController {
 	
 	 @GetMapping
 	    public String accueil() {
-	        return "base_layout";
+	        return "dashboard";
 	    }
 
 }

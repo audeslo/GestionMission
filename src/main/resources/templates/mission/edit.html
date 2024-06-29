@@ -8,52 +8,88 @@
 </head>
 <body>
 
-    <section th:insert="~{header :: header}"></section>
-    <div class="container">
-        <h1>Modifier une Mission</h1>
-        <form th:action="@{/missions/{id}/modifier(id=${mission.id})}" th:object="${mission}" method="post">
-            <div class="form-group">
-                <label for="conducteur">Conducteur</label>
-                <select id="conducteur" th:field="*{conducteur}" class="form-control" required>
-                    <option th:each="conducteur : ${conducteurs}"
-                            th:value="${conducteur.id}"
-                            th:text="${conducteur.nom + ' ' + conducteur.prenom}">
-                    </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="vehicule">Véhicule</label>
-                <select id="vehicule" th:field="*{vehicule}" class="form-control" required>
-                    <option th:each="vehicule : ${vehicules}"
-                            th:value="${vehicule.id}"
-                            th:text="${vehicule.marque + ' ' + vehicule.modele}">
-                    </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="destination">Destination</label>
-                <input type="text" id="destination" th:field="*{destination}" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="dateDebut">Date de Début</label>
-                <input type="datetime-local" id="dateDebut" th:field="*{dateDebut}" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="dateFin">Date de Fin</label>
-                <input type="datetime-local" id="dateFin" th:field="*{dateFin}" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="participants">Participants</label>
-                <select id="participants" th:field="*{participants}" multiple="true" class="form-control">
-                    <option th:each="participant : ${participants}"
-                            th:value="${participant.id}"
-                            th:text="${participant.nom + ' ' + participant.prenom}">
-                    </option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
-        </form>
+<section th:insert="~{header :: header}"></section>
+<div class="container">
+    <div class="col-12 mb-5 position-relative">
+        <div>
+            <span class="s-draw"></span>
+            <h4 class="mb-1 ms-3 ff-medium" >Modifier la mission </h4>
+        </div>
     </div>
-    <script th:src="@{/js/custom.js}"></script>
+    <form th:action="@{/missions/{id}/modifier(id=${mission.id})}" th:object="${mission}" method="post">
+        <div class="row mb-5">
+            <div class="col-6 mb-5">
+                <div class="col-3">
+                    <label for="conducteur">Conducteur</label>
+                </div>
+                <div class="col">
+                    <select id="conducteur" th:field="*{conducteur}" class="form-control form-control-lg" required>
+                        <option th:each="conducteur : ${conducteurs}"
+                                th:value="${conducteur.id}"
+                                th:text="${conducteur.nom + ' ' + conducteur.prenom}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-6 mb-5">
+                <div class="col-3">
+                    <label for="vehicule">Véhicule</label>
+                </div>
+                <div class="col">
+                    <select id="vehicule" th:field="*{vehicule}" class="form-control form-control-lg" required>
+                        <option th:each="vehicule : ${vehicules}"
+                                th:value="${vehicule.id}"
+                                th:text="${vehicule.marque + ' ' + vehicule.modele}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-6 mb-5">
+                <div class="col-3">
+                    <label for="destination">Destination</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="destination" th:field="*{destination}" class="form-control form-control-lg" />
+                </div>
+            </div>
+            <div class="col-6 mb-5">
+                <div class="col-3">
+                    <label for="dateDebut">Date de Début</label>
+                </div>
+                <div class="col">
+                    <input type="datetime-local" id="dateDebut" th:field="*{dateDebut}" class="form-control form-control-lg" />
+                </div>
+            </div>
+            <div class="col-6 mb-5">
+                <div class="col-3">
+                    <label for="dateFin">Date de Fin</label>
+                </div>
+                <div class="col">
+                    <input type="datetime-local" id="dateFin" th:field="*{dateFin}" class="form-control form-control-lg" />
+                </div>
+            </div>
+            <div class="col-6 mb-5">
+                <div class="col-3">
+                    <label for="participants">Participants</label>
+                </div>
+                <div class="col">
+                    <select id="participants" th:field="*{participants}" multiple="true" class="form-control form-control-lg">
+                        <option th:each="participant : ${participants}"
+                                th:value="${participant.id}"
+                                th:text="${participant.nom + ' ' + participant.prenom}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <button type="reset" class="btn btn-danger me-2"><i class="fa fa-trash"></i> Annuler</button>
+                <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Modifier</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/custom.js}"></script>
 </body>
 </html>
