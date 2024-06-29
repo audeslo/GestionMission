@@ -29,8 +29,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="conducteur : ${conducteurs}">
-                        <td th:text="${conducteur.id}"></td>
+                    <tr th:each="conducteur, iter : ${conducteurs}">
+                        <td th:text="${iter.count}"></td>
                         <td th:text="${conducteur.nom}"></td>
                         <td th:text="${conducteur.prenom}"></td>
                         <td th:text="${#temporals.format(conducteur.datedenaissance, 'dd/MM/yyyy')}"></td>

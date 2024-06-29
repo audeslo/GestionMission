@@ -17,6 +17,7 @@
                     <h4 class="mb-1 ms-3 ff-medium">Liste des missions()</h4>
                 </div>
                 <div>
+                    <a class="btn btn-primary s-color-white me-2" th:href="@{/missions/recherche}"><i class="fa fa-search"></i> Nouvelle Recherche</a>
                     <a class="btn btn-success s-color-white" th:href="@{/missions/nouveau}"><i class="fa fa-plus"></i> Nouveau Mission</a>
                 </div>
 
@@ -25,7 +26,7 @@
             <table class="table">
                 <thead class="table-secondary text-size-14">
                 <tr>
-                    <th>ID</th>
+                    <th>N°</th>
                     <th>Conducteur</th>
                     <th>Véhicule</th>
                     <th>Destination</th>
@@ -35,16 +36,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="mission : ${missions}">
-                    <td th:text="${mission.id}">1</td>
-                    <td th:text="${mission.conducteur.nom + ' ' + mission.conducteur.prenom}">Conducteur</td>
-                    <td th:text="${mission.vehicule.marque + ' ' + mission.vehicule.modele}">Véhicule</td>
-                    <td th:text="${mission.destination}">Destination</td>
-                    <td th:text="${#temporals.format(mission.dateDebut, 'dd/MM/yyyy HH:mm')}">Date de Début</td>
-                    <td th:text="${#temporals.format(mission.dateFin, 'dd/MM/yyyy HH:mm')}">Date de Fin</td>
+                <tr th:each="mission, iter : ${missions}">
+                    <td th:text="${iter.count}"></td>
+                    <td th:text="${mission.conducteur.nom + ' ' + mission.conducteur.prenom}"></td>
+                    <td th:text="${mission.vehicule.marque + ' ' + mission.vehicule.modele}"></td>
+                    <td th:text="${mission.destination}"></td>
+                    <td th:text="${#temporals.format(mission.dateDebut, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${#temporals.format(mission.dateFin, 'dd/MM/yyyy HH:mm')}"></td>
                     <!--<td th:text="${#dates.format(mission.dateFin, 'dd MMMM yyyy, HH:mm')}">Date de Fin</td>-->
                     <td>
-                        <a th:href="@{/missions/{id}/modifier(id=${mission.id})}"><i class="fa fa-pencil"></i></a>
+                        <a th:href="@{/missions/{id}/modifier(id=${mission.id})}"><i class="fa fa-pencilcil"></i></a>
                         <a th:href="@{/missions/{id}/supprimer(id=${mission.id})}"><i class="fa fa-trash s-color-red" ></i></a>
                     </td>
                 </tr>
