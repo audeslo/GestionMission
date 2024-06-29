@@ -2,9 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Modifier une Mission</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/fontawesome/css/font-awesome.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/css/mystyles.css}" rel = "stylesheet"/>
 </head>
 <body>
+
+    <section th:insert="~{header :: header}"></section>
     <div class="container">
         <h1>Modifier une Mission</h1>
         <form th:action="@{/missions/{id}/modifier(id=${mission.id})}" th:object="${mission}" method="post">
