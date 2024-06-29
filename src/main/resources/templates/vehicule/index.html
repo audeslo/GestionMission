@@ -2,14 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Liste des Véhicules</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/fontawesome/css/font-awesome.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/css/mystyles.css}" rel = "stylesheet"/>
 </head>
 <body>
-    <div class="container">
-        <h1>Liste des Véhicules</h1>
-        <a class="btn btn-primary" th:href="@{/vehicules/nouveau}">Nouveau Véhicule</a>
-        <table class="table">
-            <thead>
+
+    <section th:insert="~{header :: header}"></section>
+    <div class="container my-5">
+        <div class="col-12">
+            <div class="col-12 mb-5 position-relative d-flex justify-content-between">
+                <div>
+                    <span class="s-draw"></span>
+                    <h4 class="mb-1 ms-3 ff-medium">Liste des véhicules()</h4>
+                </div>
+                <div>
+                    <a th:href="@{/vehicules/nouveau}" class="btn btn-success s-color-white"><i class="fa fa-plus"></i> Nouveau Véhicule</a>
+                </div>
+            </div>
+            <table class="table">
+                <thead class="table-secondary text-size-14">
                 <tr>
                     <th>ID</th>
                     <th>Marque</th>
@@ -17,20 +29,21 @@
                     <th>Immatriculation</th>
                     <th>Actions</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr th:each="vehicule : ${vehicules}">
                     <td th:text="${vehicule.id}"></td>
                     <td th:text="${vehicule.marque}"></td>
-                     <td th:text="${vehicule.modele}"></td>
+                    <td th:text="${vehicule.modele}"></td>
                     <td th:text="${vehicule.immatriculation}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{/vehicules/{id}/modifier(id=${vehicule.id})}">Modifier</a>
-                        <a class="btn btn-danger" th:href="@{/vehicules/{id}/supprimer(id=${vehicule.id})}">Supprimer</a>
+                        <a th:href="@{/vehicules/{id}/modifier(id=${vehicule.id})}"><i class="fa fa-pencilcil"></i></a>
+                        <a th:href="@{/vehicules/{id}/supprimer(id=${vehicule.id})}"><i class="fa fa-trash s-color-red"></i></a>
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
     <script th:src="@{/js/bootstrap.min.js}"></script>    
 </body>

@@ -2,35 +2,79 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Créer un Véhicule</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/fontawesome/css/font-awesome.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/css/mystyles.css}" rel = "stylesheet"/>
 </head>
 <body>
-    <div class="container">
-        <h1>Créer un Véhicule</h1>
+
+    <section th:insert="~{header :: header}"></section>
+    <div class="container my-5">
+        <div class="col-12 mb-5 position-relative">
+            <div>
+                <span class="s-draw"></span>
+                <h4 class="mb-1 ms-3 ff-medium">Créer un véhicule</h4>
+            </div>
+        </div>
         <form th:action="@{/vehicules}" th:object="${vehicule}" method="post">
-            <div class="form-group">
-                <label for="marque">Marque</label>
-                <input type="text" class="form-control" id="marque" th:field="*{marque}">
+            <div class="row mb-5">
+                <div class="col-6 mb-5">
+                    <div class="form-group d-flex">
+                        <div class="col-3">
+                            <label for="marque">Marque</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="marque" th:field="*{marque}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mb-5">
+                    <div class="form-group d-flex">
+                        <div class="col-3">
+                            <label for="modele">Modèle</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="modele" th:field="*{modele}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mb-5">
+                    <div class="form-group d-flex">
+                        <div class="col-3">
+                            <label for="immatriculation">Immatriculation</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="immatriculation" th:field="*{immatriculation}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mb-5">
+                    <div class="form-group d-flex">
+                        <div class="col-3">
+                            <label for="datemiseencirculation">Date de Mise en Circulation</label>
+                        </div>
+                        <div class="col">
+                            <input type="date" class="form-control" id="datemiseencirculation" th:field="*{datemiseencirculation}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group d-flex">
+                        <div class="col-3">
+                            <label for="nombreplace">Nombre de place</label>
+                        </div>
+                        <div class="col">
+                            <input type="number" class="form-control" id="nombreplace" th:field="*{nombreplace}">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="modele">Modèle</label>
-                <input type="text" class="form-control" id="modele" th:field="*{modele}">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <button type="reset" class="btn btn-danger me-2"><i class="fa fa-trash"></i> Annuler</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Créer</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="immatriculation">Immatriculation</label>
-                <input type="text" class="form-control" id="immatriculation" th:field="*{immatriculation}">
-            </div>
-            
-            <div class="form-group">
-                <label for="datemiseencirculation">Date de Mise en Circulation</label>
-                <input type="date" class="form-control" id="datemiseencirculation" th:field="*{datemiseencirculation}">
-            </div>
-            
-            <div class="form-group">
-                <label for="nombreplace">Nombre de place</label>
-                <input type="number" class="form-control" id="nombreplace" th:field="*{nombreplace}">
-            </div>
-            <button type="submit" class="btn btn-primary">Créer</button>
         </form>
     </div>
 </body>
