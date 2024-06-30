@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de bord</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/fontawesome/css/font-awesome.min.css}" rel = "stylesheet"/>
+    <link th:href="@{/css/mystyles.css}" rel = "stylesheet"/>
+</head>
+<body>
+
+    <section th:insert="~{header :: header}"></section>
+    <div class="container my-5">
+        <div class="col-12">
+            <div class="col-12 mb-5 position-relative">
+                <span class="s-draw"></span>
+                <h4 class="mb-1 ms-3 ff-medium">Statistiques générales</h4>
+            </div>
+            <div class="row">
+                <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-primary-color s-color-primary mb-4">
+                    <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
+                    <div class="col">
+                        <h3 class="ff-bold">0</h3>
+                        <h6 class="ff-regular">Missions</h6>
+                    </div>
+                    <div class="col-1 d-flex align-items-start justify-content-end">
+                        <i class="bi bi-arrow-up-right text-size-20"></i>
+                    </div>
+                </div>
+
+                <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-green s-color-green mb-4">
+                    <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
+                    <div class="col">
+                        <h3 class="ff-bold">0</h3>
+                        <h6 class="ff-regular">Chauffeurs</h6>
+                    </div>
+                    <div class="col-1 d-flex align-items-start justify-content-end">
+                        <i class="bi bi-arrow-up-right text-size-20"></i>
+                    </div>
+                </div>
+
+                <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-blue s-color-blue mb-4">
+                    <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
+                    <div class="col">
+                        <h3 class="ff-bold">0</h3>
+                        <h6 class="ff-regular">Véhicules</h6>
+                    </div>
+                    <div class="col-1 d-flex align-items-start justify-content-end">
+                        <i class="bi bi-arrow-up-right text-size-20"></i>
+                    </div>
+                </div>
+
+                <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-red s-color-red mb-4">
+                    <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
+                    <div class="col">
+                        <h3 class="ff-bold">0</h3>
+                        <h6 class="ff-regular">Participants</h6>
+                    </div>
+                    <div class="col-1 d-flex align-items-start justify-content-end">
+                        <i class="bi bi-arrow-up-right text-size-20"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
