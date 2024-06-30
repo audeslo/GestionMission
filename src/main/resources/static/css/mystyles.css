@@ -171,3 +171,24 @@ a {
 .td-w-30{
     width: 30% ;
 }
+
+.dashboard {
+    width: 280px;
+    height: 100px;
+}
+
+.border-primary-color{
+    border-color: var(--s-primary) !important;
+}
+
+.border-green{
+    border-color: var(--s-green) !important;
+}
+
+.border-blue{
+    border-color: var(--s-blue) !important;
+}
+
+.border-red{
+    border-color: var(--s-red) !important;
+}
