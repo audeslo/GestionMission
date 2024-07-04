@@ -3,7 +3,7 @@
  */
 package com.eneam.gestionmission.service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,7 @@ public class MissionService {
 	
 	@Autowired
     private MissionRepository missionRepository;
+	
 
     public List<Mission> listerMissions() {
         return missionRepository.findAll();
@@ -41,8 +42,8 @@ public class MissionService {
         return !missionsExistantes.isEmpty();
     }
     
-    public List<Mission> trouverMissionsParPeriode(LocalDateTime dateDebut, LocalDateTime dateFin) {
-        return missionRepository.findByDateDebutBetweenOrDateFinBetween(dateDebut, dateFin, dateDebut, dateFin);
+    public List<Mission> trouverMissionsParPeriode(LocalDate dateDebut, LocalDate dateFin) {
+        return missionRepository.findAllByDateDebutBetween(dateDebut, dateFin);
     }
 
     public Mission trouverMissionParId(Long id) {
@@ -56,6 +57,10 @@ public class MissionService {
 
     public void supprimerMission(Long id) {
         missionRepository.deleteById(id);
+    }
+    
+    public long getNombreDeMissions() {
+        return missionRepository.count();
     }
 
 }

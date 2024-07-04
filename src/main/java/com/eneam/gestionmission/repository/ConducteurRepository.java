@@ -11,5 +11,7 @@ import com.eneam.gestionmission.model.Conducteur;
  * 
  */
 public interface ConducteurRepository extends JpaRepository<Conducteur, Long> {
+	
+	long count();
 
 }

@@ -20,7 +20,7 @@
                 <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-primary-color s-color-primary mb-4">
                     <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
                     <div class="col">
-                        <h3 class="ff-bold">0</h3>
+                        <h3 class="ff-bold"><span th:text="${missions}">0</span></h3>
                         <h6 class="ff-regular">Missions</h6>
                     </div>
                     <div class="col-1 d-flex align-items-start justify-content-end">
@@ -31,7 +31,7 @@
                 <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-green s-color-green mb-4">
                     <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
                     <div class="col">
-                        <h3 class="ff-bold">0</h3>
+                        <h3 class="ff-bold"><span th:text="${conducteurs}">0</span></h3>
                         <h6 class="ff-regular">Chauffeurs</h6>
                     </div>
                     <div class="col-1 d-flex align-items-start justify-content-end">
@@ -42,7 +42,7 @@
                 <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-blue s-color-blue mb-4">
                     <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
                     <div class="col">
-                        <h3 class="ff-bold">0</h3>
+                        <h3 class="ff-bold"><span th:text="${vehicules}">0</span></h3>
                         <h6 class="ff-regular">Véhicules</h6>
                     </div>
                     <div class="col-1 d-flex align-items-start justify-content-end">
@@ -53,7 +53,7 @@
                 <div class="dashboard me-3 col-md-6 col-12 border d-flex justify-content-between rounded p-3 border-red s-color-red mb-4">
                     <div class="d-flex align-items-center me-2"><i class=" rounded-circle s-bg-primary-light p-3 text-size-20 fa fa-tag"></i></div>
                     <div class="col">
-                        <h3 class="ff-bold">0</h3>
+                        <h3 class="ff-bold"><span th:text="${participants}">0</span></h3>
                         <h6 class="ff-regular">Participants</h6>
                     </div>
                     <div class="col-1 d-flex align-items-start justify-content-end">

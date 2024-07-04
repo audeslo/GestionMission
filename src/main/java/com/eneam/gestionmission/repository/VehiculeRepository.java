@@ -11,5 +11,8 @@ import com.eneam.gestionmission.model.Vehicule;
  * 
  */
 public interface VehiculeRepository extends JpaRepository<Vehicule, Long> {
+	
+	long count();
+	boolean existsByImmatriculation(String immatriculation);
 
 }

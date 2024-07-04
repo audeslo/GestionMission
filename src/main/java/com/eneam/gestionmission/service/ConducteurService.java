@@ -40,5 +40,9 @@ public class ConducteurService {
     public void supprimerConducteur(Long id) {
         conducteurRepository.deleteById(id);
     }
+    
+    public long getNombreDeConduteurs() {
+        return conducteurRepository.count();
+    }
 
 }

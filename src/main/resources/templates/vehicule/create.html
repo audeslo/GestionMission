@@ -16,6 +16,9 @@
                 <h4 class="mb-1 ms-3 ff-medium">Créer un véhicule</h4>
             </div>
         </div>
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+            <p th:text="${errorMessage}"></p>
+        </div>
         <form th:action="@{/vehicules}" th:object="${vehicule}" method="post">
             <div class="row mb-5">
                 <div class="col-6 mb-5">
@@ -76,6 +79,16 @@
                 </div>
             </div>
         </form>
+        
+        <br>
+		    <div th:if="${message}">
+		        <p th:text="${message}"></p>
+		    </div>
+		    <div th:if="${error}">
+		        <p th:text="${error}" style="color: red;"></p>
+		    </div>
     </div>
+    
+     <script th:src="@{/js/custom.js}"></script>
 </body>
 </html>

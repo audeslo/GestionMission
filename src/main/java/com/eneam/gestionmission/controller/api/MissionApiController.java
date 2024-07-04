@@ -1,6 +1,6 @@
 package com.eneam.gestionmission.controller.api;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class MissionApiController {
 
     @GetMapping("/periode")
     public List<Mission> getMissionsByPeriod(
-            @RequestParam("dateDebut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateDebut,
-            @RequestParam("dateFin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateFin) {
+            @RequestParam("dateDebut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate dateDebut,
+            @RequestParam("dateFin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate dateFin) {
         return missionService.trouverMissionsParPeriode(dateDebut, dateFin);
     }
 

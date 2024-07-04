@@ -41,5 +41,9 @@ public class ParticipantService {
 	    public void supprimerParticipant(Long id) {
 	        participantRepository.deleteById(id);
 	    }
+	    
+	    public long getNombreDeParticipants() {
+	        return participantRepository.count();
+	    }
 
 }

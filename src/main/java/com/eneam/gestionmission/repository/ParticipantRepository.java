@@ -6,5 +6,7 @@ import com.eneam.gestionmission.model.Participant;
 
 public interface ParticipantRepository extends JpaRepository<Participant, Long> {
 	
+	long count();
+	
 
 }

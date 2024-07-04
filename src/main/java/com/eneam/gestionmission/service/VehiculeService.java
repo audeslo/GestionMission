@@ -18,7 +18,10 @@ public class VehiculeService {
         return vehiculeRepository.findAll();
     }
 
-    public Vehicule creerVehicule(Vehicule vehicule) {
+    public Vehicule creerVehicule(Vehicule vehicule) throws Exception {
+        if (vehiculeRepository.existsByImmatriculation(vehicule.getImmatriculation())) {
+            throw new Exception("Un véhicule avec cette immatriculation existe déjà.");
+        }
         return vehiculeRepository.save(vehicule);
     }
 
@@ -35,4 +38,7 @@ public class VehiculeService {
         vehiculeRepository.deleteById(id);
     }
 
+    public long getNombreDeVehicules() {
+        return vehiculeRepository.count();
+    }
 }

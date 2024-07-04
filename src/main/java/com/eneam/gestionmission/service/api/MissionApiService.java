@@ -1,6 +1,6 @@
 package com.eneam.gestionmission.service.api;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class MissionApiService {
 	 @Autowired
 	    private MissionRepository missionRepository;
 
-	    public List<Mission> trouverMissionsParPeriode(LocalDateTime dateDebut, LocalDateTime dateFin) {
+	    public List<Mission> trouverMissionsParPeriode(LocalDate dateDebut, LocalDate dateFin) {
 	        return missionRepository.findByDateDebutBetween(dateDebut, dateFin);
 	    }
 

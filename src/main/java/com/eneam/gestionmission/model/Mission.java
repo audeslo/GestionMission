@@ -1,6 +1,6 @@
 package com.eneam.gestionmission.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.ElementCollection;
@@ -22,8 +22,8 @@ public class Mission {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime dateDebut;
-    private LocalDateTime dateFin;
+    private LocalDate dateDebut;
+    private LocalDate dateFin;
     private String destination;
     private String objetmission;
     
@@ -72,28 +72,28 @@ public class Mission {
 	/**
 	 * @return the dateDebut
 	 */
-	public LocalDateTime getDateDebut() {
+	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
 
 	/**
 	 * @param dateDebut the dateDebut to set
 	 */
-	public void setDateDebut(LocalDateTime dateDebut) {
+	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
 	/**
 	 * @return the dateFin
 	 */
-	public LocalDateTime getDateFin() {
+	public LocalDate getDateFin() {
 		return dateFin;
 	}
 
 	/**
 	 * @param dateFin the dateFin to set
 	 */
-	public void setDateFin(LocalDateTime dateFin) {
+	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
 

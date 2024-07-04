@@ -32,8 +32,13 @@ public class VehiculeController {
     }
 
     @PostMapping
-    public String creerVehicule(@ModelAttribute Vehicule vehicule) {
-        vehiculeService.creerVehicule(vehicule);
+    public String creerVehicule(@ModelAttribute Vehicule vehicule,Model model) {
+    	try {
+            vehiculeService.creerVehicule(vehicule);
+            model.addAttribute("message", "Véhicule ajouté avec succès.");
+        } catch (Exception e) {
+            model.addAttribute("message", e.getMessage());
+        }
         return "redirect:/vehicules";
     }
 

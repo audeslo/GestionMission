@@ -37,8 +37,9 @@
                     <td th:text="${mission.conducteur.nom + ' ' + mission.conducteur.prenom}"></td>
                     <td th:text="${mission.vehicule.marque + ' ' + mission.vehicule.modele}"></td>
                     <td th:text="${mission.destination}"></td>
-                    <td th:text="${#temporals.format(mission.dateDebut, 'dd/MM/yyyy HH:mm')}"></td>
-                    <td th:text="${#temporals.format(mission.dateFin, 'dd/MM/yyyy HH:mm')}"></td>
+<!--                    <td th:text="${#temporals.format(mission.dateDebut, 'dd/MM/yyyy HH:mm')}"></td>-->
+                    <td th:text="${#temporals.format(mission.dateDebut, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#temporals.format(mission.dateFin, 'dd/MM/yyyy')}"></td>
                 </tr>
                 </tbody>
             </table>
